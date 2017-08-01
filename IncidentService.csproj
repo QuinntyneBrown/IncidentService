@@ -178,6 +178,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="ClientApp\app\incidents\incidents-list-page.component.css" />
+    <Content Include="ClientApp\app\incidents\incidents-list-page.component.html" />
+    <Content Include="ClientApp\app\incidents\incidents-edit-page.component.css" />
+    <Content Include="ClientApp\app\incidents\incidents-edit-page.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libs\jquery.signalR-2.2.0.js" />
@@ -225,9 +229,7 @@
     <Compile Include="Features\Incidents\IncidentApiModel.cs" />
     <Compile Include="Features\Incidents\IncidentsController.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ClientApp\app\incidents\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\app.component.ts">
       <DependentUpon>app.component.html</DependentUpon>
@@ -240,9 +242,15 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\shared\components\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\main.ts" />
     <TypeScriptCompile Include="ClientApp\polyfills.ts" />
     <TypeScriptCompile Include="ClientApp\app\incidents\incidents.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\incidents\incidents.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\incidents\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\incidents\incident.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\incidents\incidents-list-page.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\incidents\incidents-edit-page.component.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

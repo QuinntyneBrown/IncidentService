@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 
-import {ProductsModule} from "../app/incidents";
+import {IncidentsModule} from "../app/incidents";
 import {SharedModule} from "../app/shared";
 
 import {AppComponent} from './app.component';
@@ -31,7 +31,7 @@ const providers = [];
         FormsModule,
         RouterModule,
 
-        ProductsModule,
+        IncidentsModule,
         SharedModule
     ],
     providers: providers,

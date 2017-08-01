@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 
-import { IncidentsComponent } from './incidents.component';
+import { IncidentsService } from './incidents.service';
 
-const declarables = [IncidentsComponent];
-const providers = [];
+const declarables = [];
+const providers = [IncidentsService];
 
 @NgModule({
     imports: [CommonModule],
