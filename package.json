@@ -1,0 +1,11 @@
+{
+  "name": "product-service",
+  "version": "1.0.0-alpha.0",
+  "description": "Product Service",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Comsense Inc.",
+  "license": "MIT"
+}
