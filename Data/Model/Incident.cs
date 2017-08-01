@@ -22,6 +22,12 @@ namespace IncidentService.Data.Model
 
         public string Description { get; set; }
 
+        public string ReportedBy { get; set; }
+
+        public bool IsClosed { get; set; }
+
+        public DateTime? ClosedOn { get; set; }
+
         public DateTime CreatedOn { get; set; }
         
 		public DateTime LastModifiedOn { get; set; }
