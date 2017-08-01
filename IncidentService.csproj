@@ -6,7 +6,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{DB644D91-4383-4D0D-AB0C-CC764F8E40FD}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -21,12 +22,14 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
     <TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
     <TypeScritModuleResolution>Classic</TypeScritModuleResolution>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -162,25 +165,31 @@
       <DependentUpon>app.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\app.component.html" />
+    <Content Include="ClientApp\app\incidents\incidents-edit-page.component.css">
+      <DependentUpon>incidents-edit-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\incidents\incidents-list-page.component.css">
+      <DependentUpon>incidents-list-page.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\shared\components\header.component.css">
       <DependentUpon>header.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\shared\components\header.component.html" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
+    <Content Include="webpack.config.js" />
     <None Include="libs\jquery-2.2.3.intellisense.js" />
     <Content Include="libs\jquery-2.2.3.js" />
     <Content Include="libs\jquery-2.2.3.min.js" />
     <Content Include="libs\jquery-2.2.3.min.map" />
+    <Content Include="tsconfig.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="ClientApp\app\incidents\incidents-list-page.component.css" />
     <Content Include="ClientApp\app\incidents\incidents-list-page.component.html" />
-    <Content Include="ClientApp\app\incidents\incidents-edit-page.component.css" />
     <Content Include="ClientApp\app\incidents\incidents-edit-page.component.html" />
   </ItemGroup>
   <ItemGroup>
@@ -236,6 +245,13 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\app.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\app.routing.ts" />
+    <TypeScriptCompile Include="ClientApp\app\environments\environment.ts" />
+    <TypeScriptCompile Include="ClientApp\app\incidents\incidents-edit-page.component.ts">
+      <DependentUpon>incidents-edit-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\incidents\incidents-list-page.component.ts">
+      <DependentUpon>incidents-list-page.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\components\header.component.ts">
       <DependentUpon>header.component.html</DependentUpon>
@@ -249,8 +265,6 @@
     <TypeScriptCompile Include="ClientApp\app\incidents\incidents.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\incidents\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\incidents\incident.model.ts" />
-    <TypeScriptCompile Include="ClientApp\app\incidents\incidents-list-page.component.ts" />
-    <TypeScriptCompile Include="ClientApp\app\incidents\incidents-edit-page.component.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -270,7 +284,8 @@
           <IISUrl>http://localhost:11425/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

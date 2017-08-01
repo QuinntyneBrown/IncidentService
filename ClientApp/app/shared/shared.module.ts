@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 
-import { SharedComponent } from './shared.component';
+import { HeaderComponent } from './components/header.component';
 
-const declarables = [SharedComponent];
+const declarables = [HeaderComponent];
 const providers = [];
 
 @NgModule({

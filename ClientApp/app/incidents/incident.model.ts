@@ -1,8 +1,6 @@
-import { Base } from "./base.model";
+export class Incident  { 
 
-export class Incident extends Base { 
-
-    public incidentId:any;
+    public id:any;
     
     public name:string;
 
@@ -10,7 +8,7 @@ export class Incident extends Base {
 
         let incident = new Incident();
 
-        incident.incidentId = data.incidentId;
+        incident.id = data.id;
 
         incident.name = data.name;
 

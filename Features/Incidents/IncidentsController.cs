@@ -1,6 +1,4 @@
 using MediatR;
-using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -10,7 +8,7 @@ namespace IncidentService.Features.Incidents
 {
     [Authorize]
     [RoutePrefix("api/incidents")]
-    public class IncidentController : ApiController
+    public class IncidentController : BaseApiController
     {
         public IncidentController(IMediator mediator)
         {
