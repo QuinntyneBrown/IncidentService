@@ -3,9 +3,7 @@ using IncidentService.Data;
 using IncidentService.Data.Model;
 using IncidentService.Features.Core;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
 
 namespace IncidentService.Features.Incidents
@@ -40,6 +38,10 @@ namespace IncidentService.Features.Incidents
                 }
 
                 entity.Name = request.Incident.Name;
+                entity.Description = request.Incident.Description;
+                entity.ReportedBy = request.Incident.ReportedBy;
+                entity.IsClosed = request.Incident.IsClosed;
+                entity.ClosedOn = request.Incident.ClosedOn;
                 
                 await _context.SaveChangesAsync();
 

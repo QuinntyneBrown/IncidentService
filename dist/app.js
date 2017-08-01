@@ -46212,18 +46212,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(9);
+var incidents_service_1 = __webpack_require__(122);
 var IncidentsEditPageComponent = (function () {
-    function IncidentsEditPageComponent() {
+    function IncidentsEditPageComponent(_indcidentsService) {
+        this._indcidentsService = _indcidentsService;
     }
+    IncidentsEditPageComponent.prototype.ngOnInit = function () {
+    };
     IncidentsEditPageComponent = __decorate([
         core_1.Component({
             template: __webpack_require__(214),
             styles: [__webpack_require__(215)],
-            selector: "cs-incidents-edit-page",
-            encapsulation: core_1.ViewEncapsulation.Native
-        })
+            selector: "ce-incidents-edit-page"
+        }),
+        __metadata("design:paramtypes", [incidents_service_1.IncidentsService])
     ], IncidentsEditPageComponent);
     return IncidentsEditPageComponent;
 }());
@@ -46254,18 +46261,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(9);
+var incidents_service_1 = __webpack_require__(122);
 var IncidentsListPageComponent = (function () {
-    function IncidentsListPageComponent() {
+    function IncidentsListPageComponent(_indcidentsService) {
+        this._indcidentsService = _indcidentsService;
     }
+    IncidentsListPageComponent.prototype.ngOnInit = function () {
+    };
     IncidentsListPageComponent = __decorate([
         core_1.Component({
             template: __webpack_require__(217),
             styles: [__webpack_require__(218)],
-            selector: "cs-incidents-list-page",
-            encapsulation: core_1.ViewEncapsulation.Native
-        })
+            selector: "ce-incidents-list-page"
+        }),
+        __metadata("design:paramtypes", [incidents_service_1.IncidentsService])
     ], IncidentsListPageComponent);
     return IncidentsListPageComponent;
 }());

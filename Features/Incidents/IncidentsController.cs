@@ -20,7 +20,7 @@ namespace IncidentService.Features.Incidents
         [ResponseType(typeof(AddOrUpdateIncidentCommand.Response))]
         public async Task<IHttpActionResult> Add(AddOrUpdateIncidentCommand.Request request)
         {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
+            request.TenantUniqueId = TenantUniqueId;
             return Ok(await _mediator.Send(request));
         }
 
@@ -29,7 +29,7 @@ namespace IncidentService.Features.Incidents
         [ResponseType(typeof(AddOrUpdateIncidentCommand.Response))]
         public async Task<IHttpActionResult> Update(AddOrUpdateIncidentCommand.Request request)
         {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
+            request.TenantUniqueId = TenantUniqueId;
             return Ok(await _mediator.Send(request));
         }
         
@@ -40,7 +40,7 @@ namespace IncidentService.Features.Incidents
         public async Task<IHttpActionResult> Get()
         {
             var request = new GetIncidentsQuery.Request();
-            request.TenantUniqueId = Request.GetTenantUniqueId();
+            request.TenantUniqueId = TenantUniqueId;
             return Ok(await _mediator.Send(request));
         }
 
@@ -49,7 +49,7 @@ namespace IncidentService.Features.Incidents
         [ResponseType(typeof(GetIncidentByIdQuery.Response))]
         public async Task<IHttpActionResult> GetById([FromUri]GetIncidentByIdQuery.Request request)
         {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
+            request.TenantUniqueId = TenantUniqueId;
             return Ok(await _mediator.Send(request));
         }
 
@@ -58,7 +58,7 @@ namespace IncidentService.Features.Incidents
         [ResponseType(typeof(RemoveIncidentCommand.Response))]
         public async Task<IHttpActionResult> Remove([FromUri]RemoveIncidentCommand.Request request)
         {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
+            request.TenantUniqueId = TenantUniqueId;
             return Ok(await _mediator.Send(request));
         }
 
