@@ -34,17 +34,13 @@ namespace IncidentService
             app.UseCors(CorsOptions.AllowAll);
             
             config.SuppressHostPrincipal();
-
-            var mediator = container.Resolve<IMediator>();
-
-
+            
             config.EnableSwagger(c => {
                 c.UseFullTypeNameInSchemaIds();
-                c.SingleApiVersion("v1", "ProductService");
+                c.SingleApiVersion("v1", "IncidentService");
             })
             .EnableSwaggerUi();
 
-            config.Filters.Add(new System.Web.Http.AuthorizeAttribute());
 
             var jSettings = new JsonSerializerSettings();
             jSettings.Formatting = Formatting.Indented;

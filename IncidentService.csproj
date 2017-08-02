@@ -211,6 +211,7 @@
     <Compile Include="Data\IncidentServiceContext.cs" />
     <Compile Include="Features\Core\BaseApiController.cs" />
     <Compile Include="Features\Core\BaseHub.cs" />
+    <Compile Include="Features\Core\BaseRequest.cs" />
     <Compile Include="Features\Core\Cache.cs" />
     <Compile Include="Features\Core\CacheProvider.cs" />
     <Compile Include="Features\Core\DateExtensions.cs" />

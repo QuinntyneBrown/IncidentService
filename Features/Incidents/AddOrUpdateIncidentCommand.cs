@@ -10,10 +10,9 @@ namespace IncidentService.Features.Incidents
 {
     public class AddOrUpdateIncidentCommand
     {
-        public class Request : IRequest<Response>
+        public class Request : BaseRequest, IRequest<Response>
         {
             public IncidentApiModel Incident { get; set; }
-            public Guid TenantUniqueId { get; set; }
         }
 
         public class Response { }

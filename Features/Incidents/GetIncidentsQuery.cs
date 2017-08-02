@@ -1,7 +1,6 @@
-using MediatR;
 using IncidentService.Data;
 using IncidentService.Features.Core;
-using System;
+using MediatR;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -11,9 +10,7 @@ namespace IncidentService.Features.Incidents
 {
     public class GetIncidentsQuery
     {
-        public class Request : IRequest<Response> { 
-            public Guid TenantUniqueId { get; set; }       
-        }
+        public class Request : BaseRequest, IRequest<Response> { }
 
         public class Response
         {

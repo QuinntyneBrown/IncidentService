@@ -1,7 +1,6 @@
-using MediatR;
 using IncidentService.Data;
 using IncidentService.Features.Core;
-using System;
+using MediatR;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
@@ -9,10 +8,9 @@ namespace IncidentService.Features.Incidents
 {
     public class RemoveIncidentCommand
     {
-        public class Request : IRequest<Response>
+        public class Request : BaseRequest, IRequest<Response>
         {
             public int Id { get; set; }
-            public Guid TenantUniqueId { get; set; } 
         }
 
         public class Response { }
