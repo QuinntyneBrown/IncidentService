@@ -6,7 +6,6 @@ using System.Web.Http.Description;
 
 namespace IncidentService.Features.Incidents
 {
-    [Authorize]
     [RoutePrefix("api/incidents")]
     public class IncidentController : BaseApiController
     {
@@ -24,10 +23,8 @@ namespace IncidentService.Features.Incidents
         [ResponseType(typeof(AddOrUpdateIncidentCommand.Response))]
         public async Task<IHttpActionResult> Update(AddOrUpdateIncidentCommand.Request request)
             => Ok(await Send(request));
-        
-        
+                
         [Route("get")]
-        [AllowAnonymous]
         [HttpGet]
         [ResponseType(typeof(GetIncidentsQuery.Response))]
         public async Task<IHttpActionResult> Get()
