@@ -8,11 +8,11 @@ import { Router } from "@angular/router";
     selector: "ce-incidents-list-page"
 })
 export class IncidentsListPageComponent {
-    constructor(private _indcidentsService: IncidentsService) {
-
-    }
+    constructor(private _indcidentsService: IncidentsService) { }
 
     ngOnInit() {
-
+        this._indcidentsService.get().subscribe(incidents => this.incidents = incidents);
     }
+
+    public incidents: Array<any> = [];
 }

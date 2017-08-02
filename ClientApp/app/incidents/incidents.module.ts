@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
+import { SharedModule } from "../shared";
 
-import { IncidentsService } from './incidents.service';
+import { IncidentsService} from './incidents.service';
 
-const declarables = [];
 const providers = [IncidentsService];
 
 @NgModule({
-    imports: [CommonModule],
-    exports: [declarables],
-    declarations: [declarables],
+    imports: [CommonModule, SharedModule],
     providers: providers
 })
 export class IncidentsModule { }

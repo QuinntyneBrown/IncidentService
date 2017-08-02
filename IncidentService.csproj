@@ -24,7 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.4</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
     <TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
@@ -185,6 +185,7 @@
     <Content Include="libs\jquery-2.2.3.min.js" />
     <Content Include="libs\jquery-2.2.3.min.map" />
     <Content Include="tsconfig.json" />
+    <Content Include="package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -260,6 +261,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\shared\components\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\interceptors\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\interceptors\tenant.interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\error.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\main.ts" />
     <TypeScriptCompile Include="ClientApp\polyfills.ts" />
