@@ -28,11 +28,8 @@ namespace IncidentService.Features.Incidents
         [HttpGet]
         [ResponseType(typeof(GetIncidentsQuery.Response))]
         public async Task<IHttpActionResult> Get()
-        {
-            var request = new GetIncidentsQuery.Request();            
-            return Ok(await Send(request));
-        }
-
+            => Ok(await Send(new GetIncidentsQuery.Request()));
+        
         [Route("getById")]
         [HttpGet]
         [ResponseType(typeof(GetIncidentByIdQuery.Response))]
