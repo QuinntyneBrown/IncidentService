@@ -11,9 +11,6 @@ namespace IncidentService.Data.Model
     {
         public int Id { get; set; }
         
-		[ForeignKey("Tenant")]
-        public int? TenantId { get; set; }
-        
 		[Index("TenantNameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]     
         [StringLength(255)]		   
