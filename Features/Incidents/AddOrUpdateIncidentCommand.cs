@@ -19,10 +19,10 @@ namespace IncidentService.Features.Incidents
 
         public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public Handler(IncidentServiceContext context, ICache cache)
+            public Handler(IncidentServiceContext context, IEventBus bus)
             {
-                _context = context;
-                _cache = cache;
+                _context = context;                
+                _bus = bus;
             }
 
             public async Task<Response> Handle(Request request)
@@ -44,11 +44,16 @@ namespace IncidentService.Features.Incidents
                 
                 await _context.SaveChangesAsync();
 
+                _bus.Publish(new
+                {
+                    TenantUniqueId = $"{request.TenantUniqueId}"
+                });
+
                 return new Response();
             }
 
-            private readonly IncidentServiceContext _context;
-            private readonly ICache _cache;
+            private readonly IncidentServiceContext _context;            
+            private readonly IEventBus _bus;
         }
     }
 }

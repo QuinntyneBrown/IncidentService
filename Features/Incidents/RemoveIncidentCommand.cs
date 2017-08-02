@@ -17,10 +17,10 @@ namespace IncidentService.Features.Incidents
 
         public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public Handler(IncidentServiceContext context, ICache cache)
+            public Handler(IncidentServiceContext context, IEventBus bus)
             {
                 _context = context;
-                _cache = cache;
+                _bus = bus;
             }
 
             public async Task<Response> Handle(Request request)
@@ -28,11 +28,17 @@ namespace IncidentService.Features.Incidents
                 var incident = await _context.Incidents.SingleAsync(x=>x.Id == request.Id && x.Tenant.UniqueId == request.TenantUniqueId);
                 incident.IsDeleted = true;
                 await _context.SaveChangesAsync();
+
+                _bus.Publish(new
+                {
+                    TenantUniqueId = $"{request.TenantUniqueId}"
+                });
+
                 return new Response();
             }
 
-            private readonly IncidentServiceContext _context;
-            private readonly ICache _cache;
+            private readonly IncidentServiceContext _context;            
+            private readonly IEventBus _bus;
         }
     }
 }

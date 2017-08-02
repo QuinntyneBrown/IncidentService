@@ -2,6 +2,7 @@
 using System.Web.Http;
 using Microsoft.Owin;
 using Unity.WebApi;
+using Microsoft.Practices.Unity;
 
 [assembly: OwinStartup(typeof(IncidentService.Startup))]
 
@@ -13,9 +14,19 @@ namespace IncidentService
         {
             GlobalConfiguration.Configure(config =>
             {
-                config.DependencyResolver = new UnityDependencyResolver(UnityConfiguration.GetContainer());
+                var container = UnityConfiguration.GetContainer();
+                config.DependencyResolver = new UnityDependencyResolver(container);
                 ApiConfiguration.Install(config, app);
+
+                var eventBus = container.Resolve<IEventBus>();
+                var queueClient = eventBus.Create("");
+
+                queueClient.OnMessage((message) =>
+                {
+                    
+                });
             });
+
         }
     }
 }
