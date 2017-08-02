@@ -27,10 +27,10 @@ namespace IncidentService.Features.Incidents
 
             public async Task<Response> Handle(Request request)
             {
-                var incidents = await _context.Incidents
+                var incidents = await _cache.FromCacheOrServiceAsync(() => _context.Incidents
                     .Include(x => x.Tenant)
                     .Where(x => x.Tenant.UniqueId == request.TenantUniqueId )
-                    .ToListAsync();
+                    .ToListAsync(), $"[Incidents] Get {request.TenantUniqueId}");
 
                 return new Response()
                 {

@@ -1,10 +1,7 @@
 using MediatR;
 using IncidentService.Data;
 using IncidentService.Features.Core;
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
 
 namespace IncidentService.Features.Incidents
@@ -32,9 +29,11 @@ namespace IncidentService.Features.Incidents
             {                
                 return new Response()
                 {
-                    Incident = IncidentApiModel.FromIncident(await _context.Incidents
+                    Incident = IncidentApiModel.FromIncident(await _cache.FromCacheOrServiceAsync(() => _context.Incidents
                     .Include(x => x.Tenant)				
-					.SingleAsync(x=>x.Id == request.Id &&  x.Tenant.UniqueId == request.TenantUniqueId))
+					.SingleAsync(x=>x.Id == request.Id 
+                    && x.Tenant.UniqueId == request.TenantUniqueId),
+                    $"[Incidents] Get By Id {request.TenantUniqueId}-{request.Id}"))
                 };
             }
 
