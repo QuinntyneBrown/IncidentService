@@ -26,15 +26,20 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 })
 export class IncidentsEditPageComponent {
     constructor(private _indcidentsService: IncidentsService,
-        private _router: Router
+        private _router: Router,
+        private _activatedRoute: ActivatedRoute
     ) { }
 
     public ngOnInit() {
-
-        //todo: if route params has id
-
-        //this._indcidentsService.getById({ id: null })
-        //    .subscribe(x => this.incident = x);
+        if (this._activatedRoute.snapshot.params["id"]) {
+            this._indcidentsService.getById({ id: this._activatedRoute.snapshot.params["id"] })
+                .subscribe(response => {                    
+                    this.form.patchValue({
+                        id: response.incident.id,
+                        name: response.incident.name
+                    });
+                });
+        }
     }
 
     public tryToSave($event) {
@@ -48,4 +53,6 @@ export class IncidentsEditPageComponent {
     });
 
     public incident: any;
+
+    
 }

@@ -40,7 +40,5 @@ namespace IncidentService.Features.Incidents
             private readonly IncidentServiceContext _context;
             private readonly ICache _cache;
         }
-
     }
-
 }

@@ -6,16 +6,15 @@ import {Component,Input,Output,EventEmitter} from "@angular/core";
     selector: "ce-incident-list-item"
 })
 export class IncidentListItemComponent {   
-
     constructor() {
-        this.select = new EventEmitter();
+        this.edit = new EventEmitter();
         this.delete = new EventEmitter();
     } 
     @Input()
     public incident: any = <any>{};
     
     @Output()
-    public select: EventEmitter<any>;
+    public edit: EventEmitter<any>;
 
     @Output()
     public delete: EventEmitter<any>;        

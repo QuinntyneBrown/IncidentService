@@ -31,28 +31,37 @@ export class IncidentsListPageComponent {
 
     public pagedList: IPagedList<any>;
     public incidents: Array<any> = [];
-
+    
     public tryToDelete($event) {        
         this._indcidentsService.remove({ id: $event.detail.incident.id })
             .subscribe(() => {
                 this._indcidentsService.get().subscribe(incidents => {
                     this.incidents = incidents;
-                    this.pagedList = toPageListFromInMemory(incidents, this.pageNumber, this.pageSize);
+                    this.pagedList = toPageListFromInMemory(this.filteredIncidents, this.pageNumber, this.pageSize);
                 });
             });
     }
     
     public tryToEdit($event) {
         this._router
-            .navigate(["incidents", "edit", $event.detail.incident.id]);
+            .navigate(["incidents", $event.detail.incident.id]);
     }
 
     public handleIncidentsFilterKeyUp($event) {
-        console.log("?");
+        this.filterTerm = $event.detail.value;        
+        this.pageNumber = 1;
+        this.pagedList = toPageListFromInMemory(this.filteredIncidents, this.pageNumber, this.pageSize);
     }
 
+    public get filteredIncidents() {
+        return this.incidents.filter(x => {
+            return x.name.indexOf(this.filterTerm) > -1;
+        });
+    }
     public setPageNumber($event) {
         this.pageNumber = $event.detail.pageNumber;
-        this.pagedList = toPageListFromInMemory(this.incidents, this.pageNumber, this.pageSize);
-    } 
+        this.pagedList = toPageListFromInMemory(this.filteredIncidents, this.pageNumber, this.pageSize);
+    }     
+
+    public filterTerm: string = "";
 }
