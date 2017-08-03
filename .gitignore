@@ -27,6 +27,8 @@ bld/
 ClientApp/**/*.js
 ClientApp/**/*.js.map
 
+coreConfiguration.config
+
 dist
 
 # Visual Studio 2015 cache/options directory

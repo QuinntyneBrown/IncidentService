@@ -20,10 +20,10 @@ namespace IncidentService.Features.Incidents
 
         public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public Handler(IncidentServiceContext context, IEventBusProvider eventBusProvider)
+            public Handler(IncidentServiceContext context, IQueueClient queueClient)
             {
-                _context = context;                
-                _bus = eventBusProvider.GetEventBus();
+                _context = context;
+                _queueClient = queueClient;
             }
 
             public async Task<Response> Handle(Request request)
@@ -45,7 +45,7 @@ namespace IncidentService.Features.Incidents
                 
                 await _context.SaveChangesAsync();
 
-                _bus.Publish(new AddedOrUpdatedIncidentMessage() {
+                _queueClient.Send(new AddedOrUpdatedIncidentMessage() {
                     TenantUniqueId = request.TenantUniqueId,
                     Payload = new {
                         Entity = entity,
@@ -57,7 +57,7 @@ namespace IncidentService.Features.Incidents
             }
 
             private readonly IncidentServiceContext _context;            
-            private readonly IEventBus _bus;
+            private readonly IQueueClient _queueClient;
         }
     }
 }

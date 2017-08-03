@@ -1,5 +1,7 @@
-﻿using MediatR;
+﻿using IncidentService.Features.Core;
+using MediatR;
 using Microsoft.Practices.Unity;
+using Microsoft.ServiceBus.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +22,7 @@ namespace IncidentService
 
                 _container.RegisterType<HttpClient>(
                     new ContainerControlledLifetimeManager(),
-                    new InjectionFactory(x => new HttpClient()));
-
+                    new InjectionFactory(x => new HttpClient()));          
             }
             return _container;
         }

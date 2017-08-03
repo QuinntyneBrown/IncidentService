@@ -6,6 +6,10 @@ using Microsoft.Practices.Unity;
 using System;
 using IncidentService.Features.Core;
 using Microsoft.AspNet.SignalR;
+using Newtonsoft.Json.Linq;
+using Microsoft.ServiceBus.Messaging;
+
+using static Newtonsoft.Json.JsonConvert;
 
 [assembly: OwinStartup(typeof(IncidentService.Startup))]
 
@@ -15,21 +19,22 @@ namespace IncidentService
     {
         public void Configuration(IAppBuilder app)
         {
-            GlobalConfiguration.Configure(config =>
+            GlobalConfiguration.Configure((Action<HttpConfiguration>)(config =>
             {
                 var container = UnityConfiguration.GetContainer();
                 config.DependencyResolver = new UnityDependencyResolver(container);
                 ApiConfiguration.Install(config, app);
-                
-                var bus = container.Resolve<IEventBusProvider>().GetEventBus();
+
                 var incidentsEventBusMessageHandler = container.Resolve<Features.Incidents.IIncidentsEventBusMessageHandler>();
-                var queueClient = bus.Create("");
+                var queueClient = container.Resolve<IQueueClient>();
 
                 queueClient.OnMessage((message) =>
                 {
-                    incidentsEventBusMessageHandler.Handle(message);
+                    var messageBody = ((BrokeredMessage)message).GetBody<string>();
+                    var messageBodyObject = DeserializeObject<JObject>(messageBody);
+                    incidentsEventBusMessageHandler.Handle(messageBodyObject);
                 });
-            });
+            }));
         }
     }
 }

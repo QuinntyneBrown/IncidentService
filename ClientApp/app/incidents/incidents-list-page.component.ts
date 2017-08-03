@@ -16,24 +16,30 @@ export class IncidentsListPageComponent {
         private _indcidentsService: IncidentsService,
         private _router: Router
     ) {
-        this.pagedList = toPageListFromInMemory([], this.pageNumber, this.pageSize)
+        this.pagedList = toPageListFromInMemory([], this.pageNumber, this.pageSize);
     }
 
     ngOnInit() {
         this._indcidentsService.get().subscribe(incidents => {  
             this.incidents = incidents;          
-            this.pagedList = toPageListFromInMemory(incidents, this.pageNumber, this.pageSize);            
-        });        
+            this.pagedList = toPageListFromInMemory(incidents, this.pageNumber, this.pageSize);               
+        });     
     }
 
     public pageNumber: any = 1;
     public pageSize: any = 5;
 
     public pagedList: IPagedList<any>;
+    public incidents: Array<any> = [];
 
     public tryToDelete($event) {        
         this._indcidentsService.remove({ id: $event.detail.incident.id })
-            .subscribe(() => this.ngOnInit());
+            .subscribe(() => {
+                this._indcidentsService.get().subscribe(incidents => {
+                    this.incidents = incidents;
+                    this.pagedList = toPageListFromInMemory(incidents, this.pageNumber, this.pageSize);
+                });
+            });
     }
     
     public tryToEdit($event) {
@@ -42,17 +48,11 @@ export class IncidentsListPageComponent {
     }
 
     public handleIncidentsFilterKeyUp($event) {
-
+        console.log("?");
     }
 
     public setPageNumber($event) {
         this.pageNumber = $event.detail.pageNumber;
         this.pagedList = toPageListFromInMemory(this.incidents, this.pageNumber, this.pageSize);
-    }
-
-    ngOnDestroy() {
-
-    }
-
-    public incidents: Array<any> = [];
+    } 
 }

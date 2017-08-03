@@ -1,5 +1,7 @@
 ﻿using IncidentService.Features.Core;
 using Microsoft.AspNet.SignalR;
+using Newtonsoft.Json.Linq;
+using System;
 
 namespace IncidentService.Features.Incidents
 {
@@ -12,19 +14,27 @@ namespace IncidentService.Features.Incidents
             _cache = cacheProvider.GetCache();
         }
 
-        public void Handle(IEventBusMessage message)
+        public void Handle(JObject message)
         {
-            if (message.Type == IncidentsEventBusMessages.AddedOrUpdatedIncidentMessage)
+            try
             {
-                _cache.ClearAll();
-            }
+                if ($"{message["Type"]}" == IncidentsEventBusMessages.AddedOrUpdatedIncidentMessage)
+                {
+                    _cache.ClearAll();
+                }
 
-            if (message.Type == IncidentsEventBusMessages.RemovedIncidentMessage)
-            {
-                _cache.ClearAll();
+                if ($"{message["Type"]}" == IncidentsEventBusMessages.RemovedIncidentMessage)
+                {
+                    _cache.ClearAll();
+                }
+
+                GlobalHost.ConnectionManager.GetHubContext<EventHub>().Clients.All.events(message);
+
             }
-            
-            GlobalHost.ConnectionManager.GetHubContext<EventHub>().Clients.All.events(message);
+            catch (Exception e)
+            {
+
+            }
         }
 
         private readonly ICache _cache;

@@ -1,3 +1,4 @@
 ﻿export const constants = {
-    HUB_URL:""
+    HUB_URL: "",
+    STORAGE_KEY: "[IncidentService] STORAGE KEY"
 }

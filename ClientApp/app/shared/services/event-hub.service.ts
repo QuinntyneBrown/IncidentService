@@ -3,32 +3,25 @@ import { Observable } from "rxjs/Observable";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import "rxjs/add/observable/fromPromise";
 import "rxjs/add/operator/map";
-import { Dispatcher } from "./dispatcher";
+import { Subject } from "rxjs/Subject";
 import { constants } from "../constants/constants";
 
 declare var $: any;
 
 @Injectable()
-export class EventHubService {
-    private _connection: any;
-
-    constructor(private _dispatcher: Dispatcher<any>) {
-        
-    }
-
-    public connect(): Promise<any> {
-        
+export class EventHubService {    
+    public events: Observable<any>;
+    
+    public connect(): Promise<any> {        
         return new Promise((resolve) => {
-            this._connection = this._connection || $.hubConnection(constants.HUB_URL);
-            
-            var eventHub = this._connection.createHubProxy("eventHub");
-
-            eventHub.on("events", (value) => {
-                
-                this._dispatcher.dispatch(value);
+            var connection = $.hubConnection(constants.HUB_URL);            
+            var eventHub = connection.createHubProxy("eventHub");
+            this.events = Observable.create((observer) => {
+                eventHub.on("events", (value) => {
+                    observer.next(value);
+                });
             });
-
-            this._connection.start().done(() => {
+            connection.start().done(() => {
                 resolve();
             });
         });

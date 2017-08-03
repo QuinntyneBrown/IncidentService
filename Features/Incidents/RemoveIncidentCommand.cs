@@ -19,10 +19,10 @@ namespace IncidentService.Features.Incidents
 
         public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public Handler(IncidentServiceContext context, IEventBusProvider eventBusProvider)
+            public Handler(IncidentServiceContext context, IQueueClient queueClient)
             {
                 _context = context;
-                _bus = eventBusProvider.GetEventBus();
+                _queueClient = queueClient;
             }
 
             public async Task<Response> Handle(Request request)
@@ -31,7 +31,7 @@ namespace IncidentService.Features.Incidents
                 incident.IsDeleted = true;
                 await _context.SaveChangesAsync();
 
-                _bus.Publish(new RemovedIncidentMessage() {
+                _queueClient.Send(new RemovedIncidentMessage() {
                     TenantUniqueId = request.TenantUniqueId,
                     Payload = new {
                         Id = request.Id,
@@ -43,7 +43,7 @@ namespace IncidentService.Features.Incidents
             }
 
             private readonly IncidentServiceContext _context;            
-            private readonly IEventBus _bus;
+            private readonly IQueueClient _queueClient;
         }
     }
 }

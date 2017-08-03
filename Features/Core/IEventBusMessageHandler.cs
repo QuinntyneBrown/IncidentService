@@ -1,7 +1,9 @@
-﻿namespace IncidentService.Features.Core
+﻿using Newtonsoft.Json.Linq;
+
+namespace IncidentService.Features.Core
 {
     public interface IEventBusMessageHandler
     {
-        void Handle(IEventBusMessage message);
+        void Handle(JObject message);
     }
 }

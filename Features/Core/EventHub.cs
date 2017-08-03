@@ -3,7 +3,5 @@
 namespace IncidentService.Features.Core
 {
     [HubName("eventHub")]
-    public class EventHub: BaseHub
-    {
-    }
+    public class EventHub: BaseHub { }
 }

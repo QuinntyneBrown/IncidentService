@@ -7,7 +7,7 @@ namespace IncidentService.Features.Incidents
     {
         public dynamic Payload { get; set; }
 
-        public string Type { get; set; } = IncidentsEventBusMessages.RemovedIncidentMessage;
+        public string Type { get; set; } = IncidentsEventBusMessages.AddedOrUpdatedIncidentMessage;
 
         public Guid TenantUniqueId { get; set; }
     }
