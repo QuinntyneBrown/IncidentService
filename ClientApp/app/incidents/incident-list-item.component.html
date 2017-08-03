@@ -1,6 +1,6 @@
 <span class="name" (click)="select.emit({ detail: { incident: incident} })">{{ incident.name }}</span>
 <div>
-    <span (click)="edit.emit({ detail: { contact: contact} })">EDIT</span>
+    <span (click)="edit.emit({ detail: { incident: incident} })">EDIT</span>
     &nbsp;&nbsp;|&nbsp;&nbsp;
-    <span (click)="delete.emit({ detail: { contact: contact} })">DELETE</span>
+    <span (click)="delete.emit({ detail: { incident: incident} })">DELETE</span>
 </div>

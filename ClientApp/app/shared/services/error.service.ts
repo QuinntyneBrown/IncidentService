@@ -2,5 +2,5 @@
 
 @Injectable()
 export class ErrorService {
-
+    constructor() { }
 }

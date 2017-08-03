@@ -205,6 +205,10 @@
       <DependentUpon>header.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\shared\components\header.component.html" />
+    <Content Include="ClientApp\app\shared\components\nav.component.css">
+      <DependentUpon>nav.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\shared\components\nav.component.html" />
     <Content Include="ClientApp\app\shared\components\pager.component.css">
       <DependentUpon>pager.component.html</DependentUpon>
     </Content>
@@ -317,6 +321,9 @@
       <DependentUpon>header.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\shared\components\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\components\nav.component.ts">
+      <DependentUpon>nav.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\shared\components\pager.component.ts">
       <DependentUpon>pager.component.html</DependentUpon>
     </TypeScriptCompile>

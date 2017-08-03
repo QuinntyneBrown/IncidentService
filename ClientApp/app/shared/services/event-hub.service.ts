@@ -12,15 +12,21 @@ declare var $: any;
 export class EventHubService {
     private _connection: any;
 
-    constructor(private _dispatcher: Dispatcher<any>) { }
+    constructor(private _dispatcher: Dispatcher<any>) {
+        
+    }
 
     public connect(): Promise<any> {
+        
         return new Promise((resolve) => {
             this._connection = this._connection || $.hubConnection(constants.HUB_URL);
-
+            
             var eventHub = this._connection.createHubProxy("eventHub");
 
-            eventHub.on("events", (value) => { this._dispatcher.dispatch(value); });
+            eventHub.on("events", (value) => {
+                
+                this._dispatcher.dispatch(value);
+            });
 
             this._connection.start().done(() => {
                 resolve();

@@ -20,9 +20,10 @@ export class IncidentsListPageComponent {
     }
 
     ngOnInit() {
-        this._indcidentsService.get().subscribe(incidents => {            
+        this._indcidentsService.get().subscribe(incidents => {  
+            this.incidents = incidents;          
             this.pagedList = toPageListFromInMemory(incidents, this.pageNumber, this.pageSize);            
-        });
+        });        
     }
 
     public pageNumber: any = 1;
@@ -30,9 +31,9 @@ export class IncidentsListPageComponent {
 
     public pagedList: IPagedList<any>;
 
-    public tryToDelete($event) {
-        this._indcidentsService.remove({ id: $event.detail.id })
-            .subscribe(this.ngOnInit);
+    public tryToDelete($event) {        
+        this._indcidentsService.remove({ id: $event.detail.incident.id })
+            .subscribe(() => this.ngOnInit());
     }
     
     public tryToEdit($event) {
@@ -44,7 +45,12 @@ export class IncidentsListPageComponent {
 
     }
 
-    public setPageNumber() {
+    public setPageNumber($event) {
+        this.pageNumber = $event.detail.pageNumber;
+        this.pagedList = toPageListFromInMemory(this.incidents, this.pageNumber, this.pageSize);
+    }
+
+    ngOnDestroy() {
 
     }
 
