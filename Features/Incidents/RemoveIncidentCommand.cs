@@ -3,6 +3,7 @@ using IncidentService.Features.Core;
 using MediatR;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System;
 
 namespace IncidentService.Features.Incidents
 {
@@ -11,6 +12,7 @@ namespace IncidentService.Features.Incidents
         public class Request : BaseRequest, IRequest<Response>
         {
             public int Id { get; set; }
+            public Guid CorrelationId { get; set; }
         }
 
         public class Response { }
@@ -29,9 +31,12 @@ namespace IncidentService.Features.Incidents
                 incident.IsDeleted = true;
                 await _context.SaveChangesAsync();
 
-                _bus.Publish(new
-                {
-                    TenantUniqueId = $"{request.TenantUniqueId}"
+                _bus.Publish(new RemovedIncidentMessage() {
+                    TenantUniqueId = request.TenantUniqueId,
+                    Payload = new {
+                        Id = request.Id,
+                        CorrelationId = request.CorrelationId
+                    }
                 });
 
                 return new Response();

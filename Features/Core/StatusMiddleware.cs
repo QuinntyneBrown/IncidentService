@@ -13,7 +13,7 @@ namespace IncidentService.Features.Core
             if (context.Request.Uri.AbsoluteUri.EndsWith("/status"))
             {
                 context.Response.StatusCode = 200;
-                await context.Response.WriteAsync("Hello!");
+                await context.Response.WriteAsync("ok");
                 return;
             }
 

@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNet.SignalR;
-
-namespace IncidentService.Features.Core
+﻿namespace IncidentService.Features.Core
 {
-    public class EventHub: Hub
+    public class EventHub: BaseHub
     {
     }
 }

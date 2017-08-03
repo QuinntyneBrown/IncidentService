@@ -3,15 +3,32 @@ import { CommonModule } from "@angular/common";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { HeaderComponent } from './components/header.component';
+import { PagerComponent } from "./components/pager.component";
 import { TenantInterceptor } from "./interceptors/tenant.interceptor";
+import { EventHubService } from "./services/event-hub.service";
+import { Dispatcher } from "./services/dispatcher";
 
-const declarables = [HeaderComponent];
+import { TabContentComponent } from "./components/tab-content.component";
+import { TabTitleComponent } from "./components/tab-title.component";
+import { TabsComponent } from "./components/tabs.component";
 
-const providers = [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TenantInterceptor,
-    multi: true,
-}];
+const declarables = [
+    HeaderComponent,
+    PagerComponent,
+    TabContentComponent,
+    TabsComponent,
+    TabTitleComponent
+];
+
+const providers = [
+    EventHubService,
+    Dispatcher,
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TenantInterceptor,
+        multi: true
+    }
+];
 
 @NgModule({
     imports: [CommonModule, HttpClientModule],

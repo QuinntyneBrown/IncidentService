@@ -9,16 +9,21 @@ namespace IncidentService
 {
     public class UnityConfiguration
     {
+        private static IUnityContainer _container;
+
         public static IUnityContainer GetContainer()
         {
-            var container = new UnityContainer();
-            container.AddMediator<UnityConfiguration>();
+            if (_container == null)
+            {
+                _container = new UnityContainer();
+                _container.AddMediator<UnityConfiguration>();
 
-            container.RegisterType<HttpClient>(
-                new ContainerControlledLifetimeManager(),
-                new InjectionFactory(x => new HttpClient()));
-            
-            return container;
+                _container.RegisterType<HttpClient>(
+                    new ContainerControlledLifetimeManager(),
+                    new InjectionFactory(x => new HttpClient()));
+
+            }
+            return _container;
         }
     }
 
@@ -31,6 +36,7 @@ namespace IncidentService
                 .Where(x => x.Name.Contains("Controller") == false
                 && x.Name.Contains("Attribute") == false
                 && x.Name.EndsWith("Hub") == false
+                && x.Name.EndsWith("Message") == false
                 && x.FullName.Contains("Data.Model") == false)
                 .ToList();
 

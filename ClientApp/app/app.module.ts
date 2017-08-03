@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {IncidentsModule} from "../app/incidents";
 import {SharedModule} from "../app/shared";
@@ -29,6 +29,7 @@ const providers = [];
         HttpModule,
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule,
 
         IncidentsModule,

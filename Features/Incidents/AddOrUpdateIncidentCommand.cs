@@ -13,6 +13,7 @@ namespace IncidentService.Features.Incidents
         public class Request : BaseRequest, IRequest<Response>
         {
             public IncidentApiModel Incident { get; set; }
+            public Guid CorrelationId { get; set; }
         }
 
         public class Response { }
@@ -44,9 +45,12 @@ namespace IncidentService.Features.Incidents
                 
                 await _context.SaveChangesAsync();
 
-                _bus.Publish(new
-                {
-                    TenantUniqueId = $"{request.TenantUniqueId}"
+                _bus.Publish(new AddedOrUpdatedIncidentMessage() {
+                    TenantUniqueId = request.TenantUniqueId,
+                    Payload = new {
+                        Entity = entity,
+                        CorrelationId = request.CorrelationId
+                    }
                 });
 
                 return new Response();
