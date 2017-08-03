@@ -25,7 +25,7 @@ export class IncidentsListPageComponent {
         });
     }
 
-    public pageNumber: any = 0;
+    public pageNumber: any = 1;
     public pageSize: any = 5;
 
     public pagedList: IPagedList<any>;
