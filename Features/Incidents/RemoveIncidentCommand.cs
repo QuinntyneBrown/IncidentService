@@ -19,10 +19,10 @@ namespace IncidentService.Features.Incidents
 
         public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public Handler(IncidentServiceContext context, IEventBus bus)
+            public Handler(IncidentServiceContext context, IEventBusProvider eventBusProvider)
             {
                 _context = context;
-                _bus = bus;
+                _bus = eventBusProvider.GetEventBus();
             }
 
             public async Task<Response> Handle(Request request)

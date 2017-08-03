@@ -20,15 +20,15 @@ namespace IncidentService
                 var container = UnityConfiguration.GetContainer();
                 config.DependencyResolver = new UnityDependencyResolver(container);
                 ApiConfiguration.Install(config, app);
-
-                var bus = container.Resolve<IEventBus>();
-                var incidentsEventBusMessageHandler = container.Resolve<Features.Incidents.IIncidentsEventBusMessageHandler>();                
+                
+                var bus = container.Resolve<IEventBusProvider>().GetEventBus();
+                var incidentsEventBusMessageHandler = container.Resolve<Features.Incidents.IIncidentsEventBusMessageHandler>();
                 var queueClient = bus.Create("");
 
                 queueClient.OnMessage((message) =>
                 {
                     incidentsEventBusMessageHandler.Handle(message);
-                });                
+                });
             });
         }
     }

@@ -255,6 +255,7 @@
     <Compile Include="Features\Core\Cache.cs" />
     <Compile Include="Features\Core\CacheProvider.cs" />
     <Compile Include="Features\Core\DateExtensions.cs" />
+    <Compile Include="Features\Core\EventBusProvider.cs" />
     <Compile Include="Features\Core\EventHub.cs" />
     <Compile Include="Features\Core\HandleError.cs" />
     <Compile Include="Features\Core\HttpRequestMessageExtensions.cs" />
