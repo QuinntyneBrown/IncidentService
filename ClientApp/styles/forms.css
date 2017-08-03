@@ -8,10 +8,10 @@
     border: 0.5px solid #888;
 }
 
-    input[type=checkbox] {
-        display: inline-block;
-        width: 25px;
-    }
+input[type=checkbox] {
+    display: inline-block;
+    width: 25px;
+}
 
 textarea {
     padding: 0px 10px 0px 10px;

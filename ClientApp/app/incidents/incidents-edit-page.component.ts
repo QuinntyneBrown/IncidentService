@@ -18,7 +18,10 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
     templateUrl: "./incidents-edit-page.component.html",
-    styleUrls: ["./incidents-edit-page.component.css"],
+    styleUrls: [
+        "../../styles/forms.css",
+        "./incidents-edit-page.component.css"
+    ],
     selector: "ce-incidents-edit-page"
 })
 export class IncidentsEditPageComponent {

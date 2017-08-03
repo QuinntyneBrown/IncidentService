@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { RouterModule } from "@angular/router";
 
 import { HeaderComponent } from './components/header.component';
 import { PagerComponent } from "./components/pager.component";
@@ -33,7 +34,7 @@ const providers = [
 ];
 
 @NgModule({
-    imports: [CommonModule, HttpClientModule],
+    imports: [CommonModule, HttpClientModule, RouterModule],
     exports: [declarables],
     declarations: [declarables],
     providers: providers
