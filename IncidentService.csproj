@@ -6,7 +6,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{DB644D91-4383-4D0D-AB0C-CC764F8E40FD}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -21,7 +22,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.4</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -219,6 +221,7 @@
       <DependentUpon>tabs.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\shared\components\tabs.component.html" />
+    <Content Include="ClientApp\styles\forms.css" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="webpack.config.js" />
@@ -296,9 +299,7 @@
     <Compile Include="Features\Incidents\IncidentApiModel.cs" />
     <Compile Include="Features\Incidents\IncidentsController.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ClientApp\styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\app.component.ts">
       <DependentUpon>app.component.html</DependentUpon>
@@ -366,7 +367,8 @@
           <IISUrl>http://localhost:11425/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

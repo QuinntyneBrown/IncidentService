@@ -4,7 +4,10 @@ import { Router } from "@angular/router";
 
 @Component({
     templateUrl: "./incidents-list-page.component.html",
-    styleUrls: ["./incidents-list-page.component.css"],
+    styleUrls: [
+        "../../styles/forms.css",
+        "./incidents-list-page.component.css"
+    ],
     selector: "ce-incidents-list-page"
 })
 export class IncidentsListPageComponent {
