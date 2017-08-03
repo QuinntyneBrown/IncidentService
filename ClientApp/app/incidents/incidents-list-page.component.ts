@@ -3,7 +3,6 @@ import { IncidentsService } from "./incidents.service";
 import { Router } from "@angular/router";
 import { toPageListFromInMemory, IPagedList } from "../shared/components/pager.component";
 
-
 @Component({
     templateUrl: "./incidents-list-page.component.html",
     styleUrls: [
@@ -21,7 +20,7 @@ export class IncidentsListPageComponent {
     }
 
     ngOnInit() {
-        this._indcidentsService.get().subscribe(incidents => {
+        this._indcidentsService.get().subscribe(incidents => {            
             this.pagedList = toPageListFromInMemory(incidents, this.pageNumber, this.pageSize);            
         });
     }

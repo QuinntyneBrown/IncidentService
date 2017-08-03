@@ -7,9 +7,9 @@ import { Observable } from "rxjs";
 export class IncidentsService {
     constructor(private _httpClient: HttpClient) { }
 
-    public add(entity: Incident) {
+    public add(options: { incident: Incident}) {
         return this._httpClient
-            .post(`${this._baseUrl}/api/incidents/add`, entity)            
+            .post(`${this._baseUrl}/api/incidents/add`, { incident: options.incident })            
             .catch(err => {
                 return Observable.of(null);
             });

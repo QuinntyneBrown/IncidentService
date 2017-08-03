@@ -33,12 +33,12 @@ export class IncidentsEditPageComponent {
 
         //todo: if route params has id
 
-        this._indcidentsService.getById({ id: null })
-            .subscribe(x => this.incident = x);
+        //this._indcidentsService.getById({ id: null })
+        //    .subscribe(x => this.incident = x);
     }
 
     public tryToSave($event) {
-        this._indcidentsService.add($event.detail.incident)
+        this._indcidentsService.add({ incident: $event.detail.incident })
             .subscribe(() => this._router.navigateByUrl("/"));
     }
 

@@ -22,8 +22,7 @@ namespace IncidentService
                 ApiConfiguration.Install(config, app);
 
                 var bus = container.Resolve<IEventBus>();
-                var incidentsEventBusMessageHandler = container.Resolve<Features.Incidents.IIncidentsEventBusMessageHandler>();
-                
+                var incidentsEventBusMessageHandler = container.Resolve<Features.Incidents.IIncidentsEventBusMessageHandler>();                
                 var queueClient = bus.Create("");
 
                 queueClient.OnMessage((message) =>
