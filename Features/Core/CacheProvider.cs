@@ -4,7 +4,7 @@ namespace IncidentService.Features.Core
     {
         public ICache GetCache()
         {
-            return MemoryCache.Current;
+            return RedisCache.Current;
         }
     }
 }

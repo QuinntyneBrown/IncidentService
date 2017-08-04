@@ -125,12 +125,17 @@
     <Reference Include="SendGrid, Version=9.0.12.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>packages\Sendgrid.9.0.12\lib\net452\SendGrid.dll</HintPath>
     </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\StackExchange.Redis.1.2.6\lib\net46\StackExchange.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>packages\Swashbuckle.Core.5.3.2\lib\net40\Swashbuckle.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.20622.1351, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -283,6 +288,8 @@
     <Compile Include="Features\Core\LoggerFactory.cs" />
     <Compile Include="Features\Core\MemoryCache.cs" />
     <Compile Include="Features\Core\RateLimit.cs" />
+    <Compile Include="Features\Core\RedisCache.cs" />
+    <Compile Include="Features\Core\RedisCacheConfiguration.cs" />
     <Compile Include="Features\Core\StatusMiddleware.cs" />
     <Compile Include="Features\Core\StringExtensions.cs" />
     <Compile Include="Features\Core\TenantMiddleware.cs" />

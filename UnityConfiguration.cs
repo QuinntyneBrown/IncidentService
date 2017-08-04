@@ -19,7 +19,7 @@ namespace IncidentService
             {
                 _container = new UnityContainer();
                 _container.AddMediator<UnityConfiguration>();
-
+                _container.RegisterInstance(RedisCache.Current);
                 _container.RegisterType<HttpClient>(
                     new ContainerControlledLifetimeManager(),
                     new InjectionFactory(x => new HttpClient()));          
@@ -38,7 +38,8 @@ namespace IncidentService
                 && x.Name.Contains("Attribute") == false
                 && x.Name.EndsWith("Hub") == false
                 && x.Name.EndsWith("Message") == false
-                && x.FullName.Contains("Data.Model") == false)
+                && x.FullName.Contains("Data.Model") == false
+                && x.Name != "MemoryCache")
                 .ToList();
 
             return container.RegisterClassesTypesAndInstances(classes);
@@ -49,7 +50,8 @@ namespace IncidentService
             var classes = AllClasses.FromAssemblies(typeof(T1).Assembly)
                 .Where(x => x.Name.Contains("Controller") == false
                 && x.Name.Contains("Attribute") == false
-                && x.FullName.Contains("Data.Model") == false)
+                && x.FullName.Contains("Data.Model") == false
+                && x.Name != "MemoryCache")
                 .ToList();
 
             classes.AddRange(AllClasses.FromAssemblies(typeof(T2).Assembly)

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Entity;
+using IncidentService.Data.Model;
 
 namespace IncidentService.Features.Incidents
 {
@@ -27,7 +28,7 @@ namespace IncidentService.Features.Incidents
 
             public async Task<Response> Handle(Request request)
             {
-                var incidents = await _cache.FromCacheOrServiceAsync(() => _context.Incidents
+                var incidents = await _cache.FromCacheOrServiceAsync<List<Incident>>(() => _context.Incidents
                     .Include(x => x.Tenant)
                     .Where(x => x.Tenant.UniqueId == request.TenantUniqueId )
                     .ToListAsync(), $"[Incidents] Get {request.TenantUniqueId}");

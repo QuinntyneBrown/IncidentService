@@ -20,12 +20,12 @@ namespace IncidentService.Features.Incidents
             {
                 if ($"{message["Type"]}" == IncidentsEventBusMessages.AddedOrUpdatedIncidentMessage)
                 {
-                    _cache.ClearAll();
+                    _cache.Remove($"[Incidents] Get {message["TenantUniqueId"]}");
                 }
 
                 if ($"{message["Type"]}" == IncidentsEventBusMessages.RemovedIncidentMessage)
                 {
-                    _cache.ClearAll();
+                    _cache.Remove($"[Incidents] Get {message["TenantUniqueId"]}");
                 }
 
                 GlobalHost.ConnectionManager.GetHubContext<EventHub>().Clients.All.events(message);

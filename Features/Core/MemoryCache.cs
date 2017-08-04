@@ -3,7 +3,12 @@ using System.Runtime.Caching;
 
 namespace IncidentService.Features.Core
 {
-    public class MemoryCache : Cache
+    public interface IMemoryCache: ICache
+    {
+
+    }
+
+    public class MemoryCache : Cache, IMemoryCache
     {
         private static volatile IncidentService.Features.Core.MemoryCache _current = null;
         private static System.Runtime.Caching.MemoryCache _cache = System.Runtime.Caching.MemoryCache.Default;
@@ -21,7 +26,8 @@ namespace IncidentService.Features.Core
 
         public override T Get<T>(string key) => (T)Get(key);
 
-        public override object Get(string key) {
+        public override object Get(string key)
+        {
             lock (_sync)
             {
                 return _cache.Contains(key) ? _cache.Get(key) : null;
@@ -44,7 +50,8 @@ namespace IncidentService.Features.Core
 
         public override void Add<T>(object objectToCache, string key, double cacheDuration)
         {
-            if (objectToCache == null) {
+            if (objectToCache == null)
+            {
                 _cache.Remove(key);
             }
             else
@@ -58,8 +65,8 @@ namespace IncidentService.Features.Core
 
         public override void ClearAll()
         {
-            foreach (var item in _cache) 
-                _cache.Remove(item.Key);            
+            foreach (var item in _cache)
+                _cache.Remove(item.Key);
         }
 
         public override bool Exists(string key) => _cache.Contains(key);
