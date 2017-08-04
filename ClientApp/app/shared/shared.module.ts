@@ -10,6 +10,8 @@ import { EventHubService } from "./services/event-hub.service";
 import { Dispatcher } from "./services/dispatcher";
 import { ErrorService } from "./services/error.service";
 
+import { TenantGuardService } from "./guards/tenant-guard.service";
+
 import { TabContentComponent } from "./components/tab-content.component";
 import { TabTitleComponent } from "./components/tab-title.component";
 import { TabsComponent } from "./components/tabs.component";
@@ -26,6 +28,7 @@ const providers = [
     EventHubService,
     Dispatcher,
     ErrorService,
+    TenantGuardService,
     {
         provide: HTTP_INTERCEPTORS,
         useClass: TenantInterceptor,

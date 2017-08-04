@@ -35,6 +35,5 @@ namespace IncidentService.Features.Incidents
 
         public static IncidentApiModel FromIncident(Incident incident)
             => FromIncident<IncidentApiModel>(incident);
-
     }
 }

@@ -1,19 +1,29 @@
 ﻿import {Routes, RouterModule} from '@angular/router';
 import {IncidentsEditPageComponent,IncidentsListPageComponent} from "./incidents";
+import {SetTenantPageComponent} from "./tenants";
+import {TenantGuardService} from "./shared/guards/tenant-guard.service";
 
 export const routes: Routes = [
     {
         path: '',
         component: IncidentsListPageComponent,
-        pathMatch:"full"
+        pathMatch: "full",
+        canActivate: [TenantGuardService]
     },
     {
         path: 'incidents/create',
-        component: IncidentsEditPageComponent
+        component: IncidentsEditPageComponent,
+        canActivate: [TenantGuardService]
     },
     {
         path: 'incidents/:id',
-        component:IncidentsEditPageComponent
+        component: IncidentsEditPageComponent,
+        canActivate: [TenantGuardService]
+    },
+    {
+        path: 'tenants/set',
+        component: SetTenantPageComponent,
+        canActivate: [TenantGuardService]
     }
 ];
 
@@ -23,5 +33,6 @@ export const RoutingModule = RouterModule.forRoot([
 
 export const routedComponents = [
     IncidentsListPageComponent,
-    IncidentsEditPageComponent
+    IncidentsEditPageComponent,
+    SetTenantPageComponent
 ];

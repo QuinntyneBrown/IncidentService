@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {IncidentsModule} from "../app/incidents";
 import {SharedModule} from "../app/shared";
+import {TenantsModule} from "../app/tenants";
 
 import {AppComponent} from './app.component';
 
@@ -33,7 +34,8 @@ const providers = [];
         RouterModule,
 
         IncidentsModule,
-        SharedModule
+        SharedModule,
+        TenantsModule
     ],
     providers: providers,
     declarations: [declarables],

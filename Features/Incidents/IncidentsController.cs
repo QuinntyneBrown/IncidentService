@@ -7,9 +7,9 @@ using System.Web.Http.Description;
 namespace IncidentService.Features.Incidents
 {
     [RoutePrefix("api/incidents")]
-    public class IncidentController : BaseApiController
+    public class IncidentsController : BaseApiController
     {
-        public IncidentController(IMediator mediator)
+        public IncidentsController(IMediator mediator)
             :base(mediator) { }
 
         [Route("add")]
@@ -40,7 +40,6 @@ namespace IncidentService.Features.Incidents
         [HttpDelete]
         [ResponseType(typeof(RemoveIncidentCommand.Response))]
         public async Task<IHttpActionResult> Remove([FromUri]RemoveIncidentCommand.Request request)
-            => Ok(await Send(request));        
-        
+            => Ok(await Send(request));                
     }
 }

@@ -1,6 +1,6 @@
-using MediatR;
 using IncidentService.Data;
 using IncidentService.Features.Core;
+using MediatR;
 using System.Threading.Tasks;
 using System.Data.Entity;
 

@@ -1,11 +1,11 @@
 using IncidentService.Data;
 using IncidentService.Features.Core;
+using IncidentService.Data.Model;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Entity;
-using IncidentService.Data.Model;
 
 namespace IncidentService.Features.Incidents
 {
